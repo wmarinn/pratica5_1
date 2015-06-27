@@ -7,7 +7,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Web :: Exemplo :: JSF :: 1</name>
+    <name>Web :: Pratica 4_3</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

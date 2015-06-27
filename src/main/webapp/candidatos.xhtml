@@ -17,34 +17,40 @@
 
     <ui:define name="content">
         <h:form>
-        <h:dataTable id="candidatoList"
+        <h:dataTable id="ldm"
              summary="Lista de candidatos"
-             value="#{registroBean.candidatoList}"
+             value="#{inscricaoBean.ldm}"
              border="1"
-             var="candidatoList">
+             var="ldm">
             <h:column>
         <f:facet name="header">
             <h:outputText value="CPF" />
         </f:facet>
-                <h:outputText value="#{candidatoList.cpf}"/>
+                <h:outputText value="#{ldm.cpf}"/>
     </h:column>
     <h:column>
         <f:facet name="header">
             <h:outputText value="Nome" />
         </f:facet>
-        <h:outputText value="#{candidatoList.nome}"/>
+        <h:commandLink value="#{ldm.nome}" action="#{inscricaoBean.candidatoAction}"/>
     </h:column>
     <h:column>
         <f:facet name="header">
             <h:outputText value="Cidade" />
         </f:facet>
-        <h:outputText value="#{candidatoList.cidade}"/>
+        <h:outputText value="#{ldm.cidade}"/>
     </h:column>
     <h:column>
         <f:facet name="header">
             <h:outputText value="Estado" />
         </f:facet>
-        <h:outputText value="#{candidatoList.estado}"/>
+        <h:outputText value="#{ldm.estado}"/>
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Excluir" />
+        </f:facet>
+        <h:commandButton value="Excluir" action="#{inscricaoBean.excluirAction}"/>
     </h:column>
         </h:dataTable>
     </h:form>

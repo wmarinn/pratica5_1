@@ -33,4 +33,5 @@ public class RegistroBean extends PageBean {
         return candidatoList;
     }
     
+    
 }
