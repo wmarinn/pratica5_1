@@ -17,7 +17,7 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:form id="form">
+        <h:form >
             <div class="titulo-form">FICHA DE INSCRIÇÃO</div>
             <h:panelGroup style="text-align: left; margin-bottom: 10px;" layout="block">
                 <h:panelGroup styleClass="form-block" layout="block">
@@ -28,7 +28,7 @@
                 </h:panelGroup>
                 <h:panelGroup styleClass="form-block" layout="block">
                     <h:outputLabel for="cpf" value="CPF"/>
-                    <h:inputText id="cpf" value="#{inscricaoBean.candidato.cpf}" label="CPF" size="15" converter="cpfConverter" required="true">
+                    <h:inputText id="form" value="#{inscricaoBean.candidato.cpf}" label="CPF" size="15" converter="cpfConverter" required="true">
                         <f:validator validatorId="cpfValidator"/>
                     </h:inputText>
                     <h:outputLabel for="rg" value="RG"/>
