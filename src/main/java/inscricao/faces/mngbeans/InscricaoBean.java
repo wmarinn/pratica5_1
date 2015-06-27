@@ -1,22 +1,21 @@
 package inscricao.faces.mngbeans;
 
-import inscricao.entity.Candidato;
-import inscricao.entity.Idioma;
+import inscricao.entity.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
+import javax.inject.Named;
 import utfpr.faces.support.PageBean;
 
-/**
- *
- * @author Wilson
- */
+
 @ManagedBean
 @RequestScoped
+@Named
 public class InscricaoBean extends PageBean {
     private static final Idioma[] idiomas = {
         new Idioma(1, "Inglês"),
@@ -26,6 +25,8 @@ public class InscricaoBean extends PageBean {
     private Candidato candidato = new Candidato(idiomas[0]); // inicialmente ingles
     private List<SelectItem> idiomaItemList;
     private static final ListDataModel <Candidato> ldm = new ListDataModel<>();
+    @Inject
+    private CandidatoList cl;
 
     public Candidato getCandidato() {
         return candidato;
@@ -52,9 +53,11 @@ public class InscricaoBean extends PageBean {
     public String confirmaAction() {
         candidato.setDataHora(new Date());
         candidato.setIdioma(idiomas[candidato.getIdioma().getCodigo()-1]);
-        RegistroBean bean = (RegistroBean) getBean("registroBean");
-        bean.addCandidato(candidato);
-        createListDataModel(bean, candidato);
+        //RegistroBean bean = (RegistroBean) getBean("registroBean");
+        //bean.addCandidato(candidato);
+        //createListDataModel(bean, candidato);
+        cl.addCandidato(candidato);
+        createListDataModel();    
         return "confirma";
     }
     
@@ -62,6 +65,11 @@ public class InscricaoBean extends PageBean {
         ldm.setWrappedData(rb.getCandidatoList());
         return ldm;
         
+    }
+    
+    public ListDataModel createListDataModel(){
+        ldm.setWrappedData(cl.getCandidatoList());
+        return ldm;
     }
     
     public String candidatoAction(){

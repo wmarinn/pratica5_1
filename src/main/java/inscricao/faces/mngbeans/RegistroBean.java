@@ -7,9 +7,9 @@ package inscricao.faces.mngbeans;
 
 import javax.inject.Named;
 import javax.enterprise.context.ApplicationScoped;
-import utfpr.faces.support.PageBean;
 import javax.faces.bean.ManagedBean;
 import inscricao.entity.Candidato;
+import inscricao.entity.CandidatoList;
 import java.util.ArrayList;
 
 /**
@@ -18,20 +18,24 @@ import java.util.ArrayList;
  */
 
 @ManagedBean
-@Named(value = "registroBean")
+@Named
 @ApplicationScoped
-public class RegistroBean extends PageBean {
+public class RegistroBean implements CandidatoList{
     
-    private static final ArrayList <Candidato> candidatoList = new ArrayList<>();
+    //private static final ArrayList <Candidato> candidatoList = new ArrayList<>();
+    public RegistroBean(){
+        
+    }  
     
-    
+    @Override
     public void addCandidato(Candidato c){
         candidatoList.add(c);
     }
     
+    @Override
     public ArrayList<Candidato> getCandidatoList(){
         return candidatoList;
     }
-    
-    
+       
 }
+

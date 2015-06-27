@@ -18,6 +18,12 @@
         <param-name>com.sun.faces.displayConfiguration</param-name>
         <param-value>true</param-value>
     </context-param>
+    <listener>
+    <description>Weld Listener</description>
+    <listener-class>
+        org.jboss.weld.environment.servlet.Listener
+    </listener-class>
+    </listener>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
