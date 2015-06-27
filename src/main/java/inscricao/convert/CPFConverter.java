@@ -27,13 +27,14 @@ public class CPFConverter implements Converter{
         if(string.length() == 11){
             cpf = Long.valueOf(string);
             if(cpf < 0 && cpf > max_limit){
-                FacesMessage msg = new FacesMessage("CPF " + string + " inválidoCONV");
+                FacesMessage msg = new FacesMessage("CPF " + string + " inválido");
                 throw new ConverterException(msg);
             }
         }
         else if(string.length() == 12){
-            if(string.charAt(9) != '-'){
-                FacesMessage msg = new FacesMessage("CPF " + string + " inválidoCONV2");
+            String model = "xxxxxxxxx-xx";
+            if(string.charAt(9) != '-' || string.contains(".")){
+                FacesMessage msg = new FacesMessage("CPF " + string + " inválido");
                 throw new ConverterException(msg);
             }
             else{
@@ -47,7 +48,7 @@ public class CPFConverter implements Converter{
         }
         else if(string.length() == 14){
             if(string.charAt(3) != '.' || string.charAt(7) != '.' || string.charAt(11) != '-'){
-               FacesMessage msg = new FacesMessage("CPF " + string + " inválidoCONV3");
+               FacesMessage msg = new FacesMessage("CPF " + string + " inválido");
                 throw new ConverterException(msg); 
             }
             else{
@@ -60,7 +61,7 @@ public class CPFConverter implements Converter{
             }
         }
         else{
-                FacesMessage msg = new FacesMessage("CPF " + string + " inválidoCONV");
+                FacesMessage msg = new FacesMessage("CPF " + string + " inválido");
                 throw new ConverterException(msg);  
         }
             return cpf;
